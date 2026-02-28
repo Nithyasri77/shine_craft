@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ampaxis AMC</title>
+<link href="" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#0B1C2D;
+color:white;
+overflow-x:hidden;
+}
+
+/* Navbar */
+.navbar{
+position:fixed;
+top:0;
+width:100%;
+padding:20px 10%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(10px);
+transition:0.3s;
+z-index:1000;
+}
+
+.navbar.scrolled{
+background:#07111b;
+box-shadow:0 5px 20px rgba(0,0,0,0.6);
+}
+
+.logo{
+font-size:22px;
+font-weight:700;
+background:linear-gradient(45deg,#007BFF,#00C6FF);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.btn{
+padding:12px 28px;
+border-radius:30px;
+background:linear-gradient(45deg,#007BFF,#00C6FF);
+color:white;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+display:inline-block;
+}
+
+.btn:hover{
+transform:scale(1.08);
+box-shadow:0 0 20px #00C6FF;
+}
+
+/* Hero */
+.hero{
+  height:100vh;
+  background: url("bgimage.jpeg") center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+}
+.hero::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+top:0;
+left:0;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+animation:fadeUp 1.5s ease;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+section{
+padding:80px 10%;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+margin-top:40px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border-radius:15px;
+overflow:hidden;
+transition:0.4s;
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+transition:0.4s;
+}
+
+.card:hover img{
+transform:scale(1.1);
+}
+
+.card-content{
+padding:20px;
+}
+
+.card:hover{
+box-shadow:0 0 25px rgba(0,198,255,0.6);
+transform:translateY(-10px);
+}
+
+/* AMC Plans */
+.plan{
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:20px;
+text-align:center;
+transition:0.3s;
+}
+
+.plan:hover{
+transform:scale(1.05);
+}
+
+.premium{
+border:2px solid #00C6FF;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{box-shadow:0 0 10px #00C6FF;}
+to{box-shadow:0 0 30px #00C6FF;}
+}
+
+/* Emergency */
+.emergency{
+background:linear-gradient(45deg,#ff4b2b,#ff416c);
+text-align:center;
+padding:60px 10%;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{opacity:1;}
+50%{opacity:0.85;}
+100%{opacity:1;}
+}
+
+footer{
+background:#07111b;
+text-align:center;
+padding:30px;
+color:#aaa;
+}
+
+@media(max-width:768px){
+.hero h1{font-size:26px;}
+}
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: #00C6FF;
+  transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: #00C6FF;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 100px;
+}
+.contact-container{
+  display:flex;
+  flex-wrap:wrap;
+  gap:40px;
+  margin-top:40px;
+  justify-content:center;
+}
+
+.contact-info,
+.contact-form{
+  background:rgba(255,255,255,0.05);
+  padding:30px;
+  border-radius:15px;
+  flex:1;
+  min-width:280px;
+  transition:0.3s;
+}
+
+.contact-info:hover,
+.contact-form:hover{
+  box-shadow:0 0 20px rgba(0,198,255,0.6);
+  transform:translateY(-5px);
+}
+
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border:none;
+  border-radius:8px;
+  outline:none;
+}
+
+.contact-form textarea{
+  resize:none;
+}
+
+.company-profile {
+  background: #0f172a;
+  color: white;
+  padding: 60px 10%;
+  text-align: center;
+}
+
+.company-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.company-logo img {
+  width: 70px;   /* smaller size */
+  height: auto;
+  border-radius: 12px;
+  transition: 0.3s ease;
+}
+
+.company-logo img:hover {
+  transform: scale(1.05);
+}
+
+.company-text {
+  max-width: 700px;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.social-icons {
+  margin-top: 20px;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  margin: 0 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  transition: 0.3s ease;
+}
+
+.social-btn svg {
+  width: 20px;
+  fill: white;
+}
+
+.social-btn:hover {
+  background: #00c6ff;
+  transform: translateY(-6px);
+  box-shadow: 0 0 15px #00c6ff;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 8%;
+  background: #0f172a;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo img {
+  width: 45px;
+  height: auto;
+}
+
+.nav-logo span {
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+}
+.whatsapp-float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  text-decoration:none;
+  box-shadow:0 0 15px rgba(0,0,0,0.3);
+  z-index:1000;
+  transition:0.3s;
+}
+
+.whatsapp-float:hover{
+  transform:scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar" id="navbar">
+
+  <div class="nav-logo">
+    <img src="logo.jpeg" alt="Company Logo">
+    <span>Ampaxis AMC Services</span>
+  </div>
+
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#amc">AMC</a>
+    <a href="#store">Store</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <a href="#contact" class="btn">Request Service</a>
+
+</nav>
+<!-- HERO -->
+<section class="hero">
+<div class="hero-content">
+<h1>Electrical & Plumbing Maintenance for Home & Business</h1>
+<p>24/7 Support • Certified Technicians • Fast Service</p>
+<br>
+<a href="#services" class="btn">Explore Services</a>
+</div>
+</section>
+<br><br>
+    <p><center>
+      <strong>Ampaxis AMC Services Private Limited</strong> <br>“Trusted Electrical & Plumbing Maintenance Experts providing AMC, Repairs & Emergency Services.”
+    </center>
+    </p>
+  </div>
+</section>
+<!-- SERVICES -->
+<section id="services">
+<h2>Our Services</h2>
+<div class="cards">
+<div class="card">
+<img src="https://images.pexels.com/photos/442150/pexels-photo-442150.jpeg?auto=compress&cs=tinysrgb&w=800">
+<div class="card-content">
+<h3>Electrical Services</h3>
+<br>
+<p>Switch / Wiring / Emergency Repairs</p>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c">
+<div class="card-content">
+<h3>Plumbing Services</h3>
+<br>
+<p>Leakage / Shower / Pipe Fixing</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- AMC -->
+<section id="amc">
+<h2>AMC Plans</h2>
+<div class="cards">
+<div class="plan">
+<h3>Basic Plan</h3>
+<br>
+<p>Minor Issues</p>
+<p>Limited Visits</p>
+<br>
+<a href="#" class="btn">Choose Plan</a>
+</div>
+
+<div class="plan premium">
+<h3>Premium Plan</h3>
+<br>
+<p>Major + Minor Issues</p>
+<p>Priority Support</p>
+<p>Faster Response</p>
+<br>
+<a href="#" class="btn">Choose Plan</a>
+</div>
+</div>
+</section>
+
+<!-- EMERGENCY -->
+<section class="emergency">
+<h2>Electrical Fire or Water Emergency?</h2>
+<br>
+<a href="#" class="btn">Request Emergency Service</a>
+</section>
+<section>
+<h2>Why Choose Us</h2>
+<div class="cards">
+  <div class="card">
+    <div class="card-content">
+      <h3>Verified Technicians</h3>
+      <br>
+      <p>Certified and background-checked professionals.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-content">
+      <h3>Fast Response</h3>
+      <br>
+      <p>Quick service with priority handling.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-content">
+      <h3>Affordable AMC</h3>
+      <br>
+      <p>Cost-effective maintenance plans.</p>
+    </div>
+  </div>
+</div>
+</section>
+<!-- STORE -->
+<section id="store">
+<h2>Product Store</h2>
+<div class="cards">
+<div class="card">
+<img src="https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=800">
+<div class="card-content">
+<h3>Electrical Products</h3>
+<br>
+<p>Switch • LED • Wire • MCB</p>
+
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&auto=format&fit=crop">
+<div class="card-content">
+<h3>Plumbing Products</h3>
+<br>
+<p>Tap • Shower • Pipe</p>
+
+</div>
+</div>
+</div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta" style="text-align:center;">
+<h2>Get Hassle-Free Maintenance Today</h2>
+<br>
+<a href="#" class="btn">Request Service</a>
+
+<a href="#" class="btn">Buy AMC</a>
+</section>
+<section id="contact">
+  <h2 style="text-align:center;">Contact Us</h2>
+
+  <div class="contact-container">
+    
+    <div class="contact-info">
+      <h3>Get In Touch</h3>
+      <br>
+      <p>📍 Chennai, Tamil Nadu</p>
+      <p>📞 +91 98765 43210</p>
+      <p>✉ support@ampaxisamc.com</p>
+      <p>🕒 24/7 Emergency Support</p>
+    </div>
+
+    <div class="contact-form">
+      <h3>Request a Service</h3>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="tel" placeholder="Phone Number" required>
+        <textarea placeholder="Describe your issue" rows="4" required></textarea>
+        <button type="submit" class="btn">Submit Request</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+<section class="company-profile">
+  
+  <div class="company-content">
+    
+    <div class="company-logo">
+      <img src="logo.jpeg" width="70px" alt="Company Logo">
+    </div>
+
+    <div class="company-text">
+      <p>
+        <strong>Ampaxis AMC Services Private Limited</strong> is a trusted provider of Electrical & Plumbing Maintenance Solutions, offering Annual Maintenance Contracts (AMC), Emergency Repairs, Switch & Wiring Services, LED Installations, and Maintenance Product Supply for residential and commercial clients.
+        <br><br>
+        With a team of trained technicians and service professionals across multiple locations, we continuously enhance service quality through structured workforce training, modern tools, digital service systems, and customer-focused quality standards.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="social-icons">
+  
+  <a href="#" class="social-btn">
+    <!-- Instagram -->
+    <svg viewBox="0 0 24 24">
+      <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 
+      0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm5 
+      5a5 5 0 110 10 5 5 0 010-10zm6.5-.9a1.2 
+      1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"/>
+    </svg>
+  </a>
+
+  <a href="#" class="social-btn">
+    <!-- Facebook -->
+    <svg viewBox="0 0 24 24">
+      <path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 
+      1.5-3.9 3.8-3.9 1.1 0 2.2.2 
+      2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 
+      1.5V12h2.7l-.4 2.9h-2.3v7A10 
+      10 0 0022 12z"/>
+    </svg>
+  </a>
+
+  <a href="#" class="social-btn">
+    <!-- WhatsApp -->
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2a10 10 0 00-8.6 
+      15.1L2 22l4.9-1.3A10 10 0 
+      1012 2zm0 18a8 8 0 
+      01-4.3-1.3l-.3-.2-2.9.8.8-2.8-.2-.3A8 
+      8 0 1112 20zm4.3-6.2c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.1-.3.2-.5.1-.2-.1-.9-.3-1.7-1-.6-.5-1-1.1-1.1-1.3-.1-.2 0-.3.1-.4.1-.1.2-.3.3-.4.1-.1.1-.2.2-.4.1-.2 
+      0-.3 0-.4 0-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 
+      0-.4.1-.6.3-.2.2-.8.8-.8 
+      1.9s.8 2.2.9 2.3c.1.1 1.6 
+      2.4 3.8 3.3.5.2 1 .3 1.3.4.6.2 
+      1.2.1 1.6.1.5-.1 1.4-.6 
+      1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/>
+    </svg>
+  </a>
+
+</div>
+
+</section>
+<footer>
+© 2026 Ampaxis AMC. All Rights Reserved.
+</footer>
+
+<script>
+window.addEventListener("scroll",function(){
+document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>50);
+});
+</script>
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+</body>
+</html>
